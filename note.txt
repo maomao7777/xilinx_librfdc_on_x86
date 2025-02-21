@@ -1,0 +1,31 @@
+rfdc: IP base addr             0xB0040000 - 0xB0043fff
+rfdc: DAC tile 0  base address 0xB0046000
+          Block 0 base address 0xB0046000
+          Block 2 base address 0xB0046800
+rfdc: DAC tile 1  base address 0xB004A000
+          Block 0 base address 0xB004A000
+          Block 2 base address 0xB004A800
+
+rfdc: ADC tile 0  base address 0xB0056000
+          Block 0 base address 0xB0056000
+rfdc: ADC tile 1  base address 0xB005A000
+          Block 0 base address 0xB005A000
+rfdc: ADC tile 2  base address 0xB005E000
+          Block 0 base address 0xB005E000
+rfdc: ADC tile 3  base address 0xB0062000
+          Block 0 base address 0xB0062000
+
+base 0xB0054000
+XRFDC_CONV_DSA_STGS 0 0   0xB0054244
+XRFDC_DSA_UPDT_OFFSET 0 0 0xB0054254 (trigger)
+
+echo "pread offst 0x(40000+0x14244)/8" > /sys/pcie_phy/phy_control (ofst->a848)
+echo "rfdc_adc_dsa tile 0 block 0 dsa 11" > /sys/pcie_rfdc/rfdc_ctrl
+
+DAC tile block RF
+    0    0     TX0
+    0    2     TX2
+    1    0     TX4
+    1    2     TX6
+ADC 0    0     RX0
+
